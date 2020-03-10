@@ -1,0 +1,13 @@
+package com.oguztalan.petclinic;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class SpringBootPetclinicProjectApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(SpringBootPetclinicProjectApplication.class, args);
+	}
+
+}
