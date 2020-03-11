@@ -6,10 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class LoginController {
-    @GetMapping("/h2")
-    public String h2() {
-        return "h2";
-    }
+
 
     @GetMapping("/")
     public String root() {
