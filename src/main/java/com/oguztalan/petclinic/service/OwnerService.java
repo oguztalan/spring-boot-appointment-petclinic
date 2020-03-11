@@ -13,6 +13,7 @@ import java.util.Optional;
 
 @Service
 public class OwnerService {
+
     @Autowired
     OwnerRepository ownerRepository;
 
@@ -48,7 +49,6 @@ public class OwnerService {
                 newEntity.setFirstName(entity.getFirstName());
                 newEntity.setLastName(entity.getLastName());
                 newEntity.setEmail(entity.getEmail());
-                newEntity.setPhoneNumber(entity.getPhoneNumber());
 
                 newEntity = ownerRepository.save(newEntity);
 
@@ -59,6 +59,17 @@ public class OwnerService {
 
                 return entity;
             }
+        }
+    }
+
+    public void deleteOwnerById(Long id)throws RecordNotFoundException{
+
+        Optional<OwnerEntity> owner = ownerRepository.findById(id);
+
+        if (owner.isPresent()){
+            ownerRepository.deleteById(id);
+        }else {
+            throw new RecordNotFoundException("Verilen id ile bir kayıt bulunamadı!");
         }
     }
 

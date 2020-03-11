@@ -6,11 +6,11 @@
     <footer>
         <div class="container">
             <p>
-                &copy; Memorynotfound.com
+                &copy; OguzTalan
                 <span sec:authorize="isAuthenticated()" style="display: inline-block;">
-                    | Logged user: <span sec:authentication="name"></span> |
+                    | Oturum açan: <span sec:authentication="name"></span> |
                     Roles: <span sec:authentication="principal.authorities"></span> |
-                    <a th:href="@{/logout}">Sign Out</a>
+                    <a th:href="@{/logout}">Çıkış</a>
                 </span>
             </p>
         </div>

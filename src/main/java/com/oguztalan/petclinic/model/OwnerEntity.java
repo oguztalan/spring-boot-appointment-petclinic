@@ -20,8 +20,8 @@ public class OwnerEntity {
     @Column(name="email", nullable=false, length=200)
     private String email;
 
-    @Column(name="phone_number")
-    private Long phoneNumber;
+   /* @Column(name="phone_number")
+    private Long phoneNumber;*/
 
     public Long getId() {
         return id;
@@ -55,11 +55,5 @@ public class OwnerEntity {
         this.email = email;
     }
 
-    public Long getPhoneNumber() {
-        return phoneNumber;
-    }
 
-    public void setPhoneNumber(Long phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
 }
