@@ -5,6 +5,7 @@ import com.oguztalan.petclinic.model.OwnerEntity;
 import com.oguztalan.petclinic.repository.OwnerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.security.acl.Owner;
 import java.util.ArrayList;
@@ -17,8 +18,8 @@ public class OwnerService {
     @Autowired
     OwnerRepository ownerRepository;
 
-    public List<OwnerEntity> getAllOwners(){
-        List<OwnerEntity> result = (List<OwnerEntity>) ownerRepository.findAll();
+    public List<OwnerEntity> listAllOwners(){
+        List<OwnerEntity> result = ownerRepository.findAll();
 
         if (result.size() > 0 )
             return  result;

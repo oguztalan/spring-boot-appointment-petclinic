@@ -1,5 +1,5 @@
 INSERT INTO 
 	TBL_OWNERS (first_name, last_name, email)
 VALUES
-  	('Lokesh', 'Gupta', 'howtodoinjava@gmail.com'),
-  	('John', 'Doe', 'xyz@email.com');
+  	('Oguz', 'Talan', 'hoguztalan@gmail.com'),
+  	('Test', 'User', 'xyz@email.com');

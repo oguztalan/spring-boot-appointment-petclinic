@@ -6,9 +6,11 @@ import com.oguztalan.petclinic.service.OwnerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,39 +22,42 @@ public class OwnerController {
     @Autowired
     OwnerService ownerService;
 
-    @RequestMapping
+    @RequestMapping("/list")
     public String getAllOwners(Model model){
-        List<OwnerEntity> list = ownerService.getAllOwners();
-
-        model.addAttribute("owners", list);
+        List<OwnerEntity> list = ownerService.listAllOwners();
+        model.addAttribute("allOwners", list);
         return "list-owners";
     }
 
-    @RequestMapping(path = {"/edit", "/edit/{id}"})
-    public String editOwnerById(Model model, @PathVariable("id")Optional<Long> id) throws RecordNotFoundException {
+    @RequestMapping("/new")
+    public String showNewOwnerPage(Model model) {
+        OwnerEntity owner = new OwnerEntity();
+        model.addAttribute("createOwner",owner);
+        return "new-owner";
+    }
 
-        if (id.isPresent()){
-            OwnerEntity entity = ownerService.getOwnerById(id.get());
-            model.addAttribute("ownersModel",entity);
-        }
-        else {
-            model.addAttribute("ownersModel", new OwnerEntity());
-        }
-        return "add-edit-owner";
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public String saveOwner(@ModelAttribute("owner") OwnerEntity owner) {
+        ownerService.createOrUpdateOwner(owner);
+        return "redirect:/owners/list";
+    }
+
+    @RequestMapping("/edit/{id}")
+    public ModelAndView showEditProductPage(@PathVariable(name = "id") Long id) throws RecordNotFoundException {
+        ModelAndView mav = new ModelAndView("edit-owner");
+        OwnerEntity owner = ownerService.getOwnerById(id);
+        mav.addObject("owner", owner);
+
+        return mav;
     }
 
     @RequestMapping(path = "/delete/{id}")
     public String deleteOwnerById(Model model, @PathVariable("id") Long id) throws RecordNotFoundException{
 
         ownerService.deleteOwnerById(id);
-        return "redirect:/owners/ownersedit";
+        return "redirect:/owners/list";
     }
 
-    @RequestMapping(path= "/createOwner",method = RequestMethod.POST)
-    public String createOrUpdateOwner(OwnerEntity entity){
 
-        ownerService.createOrUpdateOwner(entity);
-        return "list-owners";
-    }
 
 }
