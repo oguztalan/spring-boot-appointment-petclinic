@@ -2,34 +2,49 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8" />
-    <title>Create New Product</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Kayıt Ekle</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
 </head>
 <body>
-<div align="center">
-    <h1>Create New Product</h1>
-    <br />
-    <form action="#" th:action="@{/owners/save}" th:object="${createOwner}"
-          method="post">
+<div class="container my-5">
+        <h3>Yeni Kayıt Ekle</h3>
+        <div class="card">
+            <div class="card-body">
+                <div class="col-md-10">
+                    <form action="#" th:action="@{/owners/save}" th:object="${createOwner}"
+                          method="post">
+                        <div class="row">
+                                <table border="0" cellpadding="5">
+                                    <div class="form-group col-md-8">
+                                        <label for="firstName" class="col-form-label">İsim</label>
+                                        <input type="text" th:field="*{firstName}" class="form-control"
+                                               id="firstName" placeholder="İsim" />
+                                    </div>
+                                    <div class="form-group col-md-8">
+                                        <label for="lastName" class="col-form-label">Soyad</label>
+                                        <input type="text" th:field="*{lastName}" class="form-control"
+                                               id="lastName" placeholder="Soyad" />
+                                    </div>
+                                    <div class="form-group col-md-8">
+                                        <label for="email" class="col-form-label">Email</label>
+                                        <input type="text" th:field="*{email}" class="form-control"
+                                               id="email" placeholder="Email Id" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="submit" class="btn btn-primary" value=" Submit ">
+                                    </div>
 
-        <table border="0" cellpadding="10">
-            <tr>
-                <td>First Name:</td>
-                <td><input type="text" th:field="*{firstName}" /></td>
-            </tr>
-            <tr>
-                <td>Last Name:</td>
-                <td><input type="text" th:field="*{lastName}" /></td>
-            </tr>
-            <tr>
-                <td>Email:</td>
-                <td><input type="text" th:field="*{email}" /></td>
-            </tr>
-            <tr>
-                <td colspan="2"><button type="submit">Save</button> </td>
-            </tr>
-        </table>
-    </form>
+                                    <input type="hidden" id="id" th:field="*{id}">
+                                </table>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 </div>
 </body>
 </html>
