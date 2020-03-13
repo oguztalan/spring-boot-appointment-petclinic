@@ -37,7 +37,7 @@ public class OwnerController {
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String saveOwner(@ModelAttribute("owner") OwnerEntity owner) {
+        public String saveOwner(@ModelAttribute("owner") OwnerEntity owner) {
         ownerService.createOrUpdateOwner(owner);
         return "redirect:/owners/list";
     }
