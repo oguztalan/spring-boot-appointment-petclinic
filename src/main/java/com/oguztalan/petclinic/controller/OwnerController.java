@@ -1,7 +1,8 @@
 package com.oguztalan.petclinic.controller;
 
 import com.oguztalan.petclinic.exception.RecordNotFoundException;
-import com.oguztalan.petclinic.model.OwnerEntity;
+import com.oguztalan.petclinic.entities.OwnerEntity;
+import com.oguztalan.petclinic.model.User;
 import com.oguztalan.petclinic.service.OwnerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/owners")
@@ -36,6 +36,8 @@ public class OwnerController {
         return "new-owner";
     }
 
+
+
     @RequestMapping(value = "/save", method = RequestMethod.POST)
         public String saveOwner(@ModelAttribute("owner") OwnerEntity owner) {
         ownerService.createOrUpdateOwner(owner);
@@ -57,6 +59,8 @@ public class OwnerController {
         ownerService.deleteOwnerById(id);
         return "redirect:/owners/list";
     }
+
+
 
 
 

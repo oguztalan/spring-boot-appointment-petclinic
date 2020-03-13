@@ -1,13 +1,11 @@
 package com.oguztalan.petclinic.service;
 
 import com.oguztalan.petclinic.exception.RecordNotFoundException;
-import com.oguztalan.petclinic.model.OwnerEntity;
+import com.oguztalan.petclinic.entities.OwnerEntity;
 import com.oguztalan.petclinic.repository.OwnerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.security.acl.Owner;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
