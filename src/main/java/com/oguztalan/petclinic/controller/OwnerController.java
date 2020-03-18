@@ -2,8 +2,7 @@ package com.oguztalan.petclinic.controller;
 
 import com.oguztalan.petclinic.exception.RecordNotFoundException;
 import com.oguztalan.petclinic.entities.OwnerEntity;
-import com.oguztalan.petclinic.model.User;
-import com.oguztalan.petclinic.service.OwnerService;
+import com.oguztalan.petclinic.service.impl.OwnerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

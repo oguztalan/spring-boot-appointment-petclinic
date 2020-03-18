@@ -16,12 +16,12 @@
             <form th:action="@{/login}" method="post">
                 <div th:if="${param.error}">
                     <div class="alert alert-danger">
-                        Invalid username or password.
+                        Yanlış kullanıcı adı yada şifre girdiniz.
                     </div>
                 </div>
                 <div th:if="${param.logout}">
                     <div class="alert alert-info">
-                        You have been logged out.
+                        Çıkış yaptınız.
                     </div>
                 </div>
                 <div class="form-group">

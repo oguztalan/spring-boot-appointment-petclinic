@@ -1,4 +1,4 @@
-package com.oguztalan.petclinic.service;
+package com.oguztalan.petclinic.service.impl;
 
 import com.oguztalan.petclinic.entities.User;
 import com.oguztalan.petclinic.repository.UserRepository;

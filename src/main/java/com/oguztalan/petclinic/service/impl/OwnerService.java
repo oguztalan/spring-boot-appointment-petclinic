@@ -1,4 +1,4 @@
-package com.oguztalan.petclinic.service;
+package com.oguztalan.petclinic.service.impl;
 
 import com.oguztalan.petclinic.exception.RecordNotFoundException;
 import com.oguztalan.petclinic.entities.OwnerEntity;
