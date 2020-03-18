@@ -65,5 +65,15 @@ public class AppointmentServiceImpl  {
 		}
 	}
 
+	public void deleteAppointmentById(Long id) throws RecordNotFoundException{
+		Optional<AppointmentEntity> appointment = repository.findById(id);
+
+		if (appointment.isPresent()){
+			repository.deleteById(id);
+		}else {
+			throw new RecordNotFoundException("Böyle bir kayıt bulunamadı");
+		}
+	}
+
 
 }

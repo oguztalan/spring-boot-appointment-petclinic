@@ -23,6 +23,7 @@ public class OwnerEntity {
     @Column(name="phone_number")
     private String phoneNumber;
 
+
     public Long getId() {
         return id;
     }
@@ -62,4 +63,6 @@ public class OwnerEntity {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+
+
 }

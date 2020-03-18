@@ -13,9 +13,6 @@ public class Appointment {
 	private Date time;
 	private String description;
 	private String priority;
-	private boolean active;
-	private User user;
-	private String username;
 
 	public Appointment() {
 		super();
@@ -28,8 +25,6 @@ public class Appointment {
 		this.time = time;
 		this.description = description;
 		this.priority = priority;
-		this.active = active;
-		this.user = user;
 	}
 	
 	public Appointment(Long id, Date date, Date time, String description, String priority, boolean active) {
@@ -39,7 +34,6 @@ public class Appointment {
 		this.time = time;
 		this.description = description;
 		this.priority = priority;
-		this.active = active;
 	}
 
 	public Appointment(Date date, Date time, String description, String priority, boolean active) {
@@ -48,7 +42,6 @@ public class Appointment {
 		this.time = time;
 		this.description = description;
 		this.priority = priority;
-		this.active = active;
 	}
 
 	public Long getId() {
@@ -91,33 +84,10 @@ public class Appointment {
 		this.priority = priority;
 	}
 
-	public boolean isActive() {
-		return active;
-	}
-
-	public void setActive(boolean active) {
-		this.active = active;
-	}
-	
-	public User getUser() {
-		return user;
-	}
-	
-	public void setUser(User user) {
-		this.user = user;
-	}
-	
-	public String getUsername() {
-		return username;
-	}
-	
-	public void setUsername(String username) {
-		this.username = username;
-	}
 
 	@Override
 	public String toString() {
 		return "Appointment [id=" + id + ", date=" + date + ", time=" + time + ", description=" + description
-				+ ", priority=" + priority + ", active=" + active + ", user=" + user + ", username=" + username + "]";
+				+ ", priority=" + priority ;
 	}
 }

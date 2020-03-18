@@ -1,5 +1,6 @@
 package com.oguztalan.petclinic.controller;
 
+import com.oguztalan.petclinic.constants.ViewConstants;
 import com.oguztalan.petclinic.exception.RecordNotFoundException;
 import com.oguztalan.petclinic.entities.OwnerEntity;
 import com.oguztalan.petclinic.service.impl.OwnerService;
@@ -25,14 +26,14 @@ public class OwnerController {
     public String getAllOwners(Model model){
         List<OwnerEntity> list = ownerService.listAllOwners();
         model.addAttribute("allOwners", list);
-        return "list-owners";
+        return ViewConstants.LIST_OWNER;
     }
 
     @RequestMapping("/new")
     public String showNewOwnerPage(Model model) {
         OwnerEntity owner = new OwnerEntity();
         model.addAttribute("createOwner",owner);
-        return "new-owner";
+        return ViewConstants.NEW_OWNER;
     }
 
 

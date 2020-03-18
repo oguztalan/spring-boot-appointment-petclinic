@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "appointments")
+@Table(name = "TBL_APPOINTMENTS")
 public class AppointmentEntity {
 
 	@Id
@@ -30,8 +30,8 @@ public class AppointmentEntity {
 	@Column(name = "priority")
 	private String priority;
 
-	@Column(name="username", insertable=false, updatable=false)
-	private String username;
+
+
 
 	public AppointmentEntity() {
 		super();
@@ -94,17 +94,9 @@ public class AppointmentEntity {
 		this.priority = priority;
 	}
 
-	public String getUsername() {
-		return username;
-	}
-	
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
 	@Override
 	public String toString() {
 		return "Appointment [id=" + id + ", date=" + date + ", time=" + time + ", description=" + description
-				+ ", priority=" + priority +   ", username=" + username + "]";
+				+ ", priority=" + priority +  "]";
 	}
 }
