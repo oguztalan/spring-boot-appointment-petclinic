@@ -36,12 +36,12 @@
             <td><span th:text="${appointment.description}"></span></td>
             <td><span th:text="${appointment.priority}"></span></td>
             <td>
-                <a th:href="@{'/owners/edit/' + ${appointment.id}}" class="btn btn-primary">
+                <a th:href="@{'/date/edit/' + ${appointment.id}}" class="btn btn-primary">
                     <i class="fas fa-user-edit ml-2"></i>
                 </a>
             </td>
             <td>
-                <a th:href="@{'/owners/delete/' + ${appointment.id}}" class="btn btn-primary">
+                <a th:href="@{'/date/delete/' + ${appointment.id}}" class="btn btn-primary">
                     <i class="fas fa-user-times ml-2"></i>
                 </a>
             </td>

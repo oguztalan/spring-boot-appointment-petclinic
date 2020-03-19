@@ -29,7 +29,7 @@ public class AppointmentServiceImpl  {
 
 	}
 
-	public AppointmentEntity getAppointment(Long id) throws RecordNotFoundException{
+	public AppointmentEntity getAppointmentById(Long id) throws RecordNotFoundException{
 		Optional<AppointmentEntity> appointment = repository.findById(id);
 		if (appointment.isPresent())
 			return appointment.get();
