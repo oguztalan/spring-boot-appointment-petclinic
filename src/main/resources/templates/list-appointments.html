@@ -9,20 +9,27 @@
     <title>Veteriner Login</title>
     <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/css/tables.css}"/>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
 </head>
 <body>
 <div layout:fragment="content" th:remove="tag" >
 <div class="container">
-    <h2>Contextual Classes</h2>
+    <h2>Randevu Kayıtları</h2>
+    <p class="my-5">
+        <a href="/date/new" class="btn btn-primary">
+            <i class="fas fa-calendar-plus">Yeni Randevu </i></a>
+    </p>
     <table class="table table-striped">
         <thead>
         <tr>
             <th>Tarih</th>
-            <th>Zaman</th>
+            <th>Saat</th>
+            <th>Hayvan Adı</th>
+            <th>Hayvan Türü</th>
             <th>Açıklama</th>
             <th>Önem Derecesi</th>
             <th>Düzenle</th>
@@ -33,16 +40,18 @@
         <tr th:each="appointment: ${allAppointment}">
             <td><span th:text="${#dates.format(appointment.date, 'dd/MM/yyyy')}"></span></td>
             <td><span th:text="${#dates.format(appointment.time, 'HH:mm')}"></span></td>
+            <td><span th:text="${appointment.animalName}"></span></td>
+            <td><span th:text="${appointment.animalType}"></span></td>
             <td><span th:text="${appointment.description}"></span></td>
             <td><span th:text="${appointment.priority}"></span></td>
             <td>
                 <a th:href="@{'/date/edit/' + ${appointment.id}}" class="btn btn-primary">
-                    <i class="fas fa-user-edit ml-2"></i>
+                    <i class="far fa-calendar-check"></i>
                 </a>
             </td>
             <td>
                 <a th:href="@{'/date/delete/' + ${appointment.id}}" class="btn btn-primary">
-                    <i class="fas fa-user-times ml-2"></i>
+                    <i class="far fa-calendar-times"></i>
                 </a>
             </td>
         </tr>

@@ -16,8 +16,9 @@
 </head>
 <body>
 <div layout:fragment="content" th:remove="tag" >
+    <div class="alert alert-success" role="alert">
     <div class="container my-5">
-        <h3 class="alert-heading">Kayıt Düzenle</h3>
+        <h3 class="alert-heading">Yeni Randevu Kaydı</h3>
         <br>
         <div class="card">
             <div class="card-body">
@@ -33,6 +34,14 @@
                                 <div class="form-group col-md-2">
                                     <label for="time">Saat</label>
                                     <input class="form-control" type="time" id="time" name="time" th:field="*{time}" placeholder="Example: 15:30:00"/>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="animalName">Hayvan Adı</label>
+                                    <input class="form-control" type="text" id="animalName" name="animalName" th:field="*{animalName}" placeholder="Hayvan ismi"/>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="animalName">Hayvan Türü</label>
+                                    <input class="form-control" type="text" id="animalType" name="animalType" th:field="*{animalType}" placeholder="Hayvan ismi"/>
                                 </div>
                                 <div class="form-group col-md-8">
                                     <label for="description">Açıklama</label>
@@ -55,6 +64,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </div>
 </body>

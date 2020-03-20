@@ -30,6 +30,13 @@ public class AppointmentEntity {
 	@Column(name = "priority")
 	private String priority;
 
+	@Column(name = "animal_name")
+	private String animalName;
+
+	@Column(name = "animal_type")
+	private String animalType;
+
+
 
 
 
@@ -92,6 +99,22 @@ public class AppointmentEntity {
 
 	public void setPriority(String priority) {
 		this.priority = priority;
+	}
+
+	public String getAnimalName() {
+		return animalName;
+	}
+
+	public void setAnimalName(String animalName) {
+		this.animalName = animalName;
+	}
+
+	public String getAnimalType() {
+		return animalType;
+	}
+
+	public void setAnimalType(String animalType) {
+		this.animalType = animalType;
 	}
 
 	@Override

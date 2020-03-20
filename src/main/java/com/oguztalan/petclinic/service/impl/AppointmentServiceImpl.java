@@ -52,6 +52,8 @@ public class AppointmentServiceImpl  {
 				newEntity.setDescription(entity.getDescription());
 				newEntity.setPriority(entity.getPriority());
 				newEntity.setTime(entity.getTime());
+				newEntity.setAnimalName(entity.getAnimalName());
+				newEntity.setAnimalType(entity.getAnimalType());
 				newEntity = repository.save(newEntity);
 
 				return newEntity;

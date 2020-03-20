@@ -13,6 +13,8 @@ public class Appointment {
 	private Date time;
 	private String description;
 	private String priority;
+	private String animalName;
+	private String animalType;
 
 	public Appointment() {
 		super();
@@ -84,6 +86,21 @@ public class Appointment {
 		this.priority = priority;
 	}
 
+	public String getAnimalName() {
+		return animalName;
+	}
+
+	public void setAnimalName(String animalName) {
+		this.animalName = animalName;
+	}
+
+	public String getAnimalType() {
+		return animalType;
+	}
+
+	public void setAnimalType(String animalType) {
+		this.animalType = animalType;
+	}
 
 	@Override
 	public String toString() {
