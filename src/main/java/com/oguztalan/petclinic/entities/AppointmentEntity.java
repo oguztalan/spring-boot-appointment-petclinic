@@ -3,11 +3,12 @@ package com.oguztalan.petclinic.entities;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name = "TBL_APPOINTMENTS")
-public class AppointmentEntity {
+public class AppointmentEntity implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,6 +37,9 @@ public class AppointmentEntity {
 	@Column(name = "animal_type")
 	private String animalType;
 
+	@OneToOne
+	@JoinColumn(name = "id")
+	private OwnerEntity owner;
 
 
 
@@ -116,6 +120,12 @@ public class AppointmentEntity {
 	public void setAnimalType(String animalType) {
 		this.animalType = animalType;
 	}
+
+	public OwnerEntity getOwner() {
+		return owner;
+	}
+
+
 
 	@Override
 	public String toString() {

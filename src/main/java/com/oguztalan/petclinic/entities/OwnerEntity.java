@@ -2,10 +2,11 @@ package com.oguztalan.petclinic.entities;
 
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name="TBL_OWNERS")
-public class OwnerEntity {
+public class OwnerEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
