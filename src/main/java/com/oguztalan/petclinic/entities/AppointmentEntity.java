@@ -121,8 +121,9 @@ public class AppointmentEntity implements Serializable {
 		this.animalType = animalType;
 	}
 
-	public OwnerEntity getOwner() {
-		return owner;
+	public String getOwner() {
+		String ownerId = owner.getId().toString();
+		return ownerId;
 	}
 
 
