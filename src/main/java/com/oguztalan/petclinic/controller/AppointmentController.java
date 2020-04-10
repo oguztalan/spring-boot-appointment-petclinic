@@ -37,6 +37,14 @@ public class AppointmentController {
         model.addAttribute("createAppointment", new Appointment());
         return ViewConstants.NEW_APPOINTMENT;
     }
+    @RequestMapping("/appointment-by-id/{id}")
+    public ModelAndView createById(@PathVariable(name = "id") Long id) throws RecordNotFoundException {
+        ModelAndView mav = new ModelAndView("new-appointments");
+        AppointmentEntity appointment = appointmentService.getAppointmentById(id);
+        mav.addObject("appointments", appointment);
+
+        return mav;
+    }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String saveOwner(@ModelAttribute("appointment") AppointmentEntity appointment) {
