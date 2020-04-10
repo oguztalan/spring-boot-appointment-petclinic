@@ -32,7 +32,6 @@
             <th>Hayvan Türü</th>
             <th>Açıklama</th>
             <th>Önem Derecesi</th>
-            <th>Sahip No</th>
             <th>Düzenle</th>
             <th>Sil</th>
         </tr>
@@ -45,7 +44,6 @@
             <td><span th:text="${appointment.animalType}"></span></td>
             <td><span th:text="${appointment.description}"></span></td>
             <td><span th:text="${appointment.priority}"></span></td>
-            <td><span th:text="${appointment.owner}"></span></td>
             <td>
                 <a th:href="@{'/date/edit/' + ${appointment.id}}" class="btn btn-primary">
                     <i class="far fa-calendar-check"></i>

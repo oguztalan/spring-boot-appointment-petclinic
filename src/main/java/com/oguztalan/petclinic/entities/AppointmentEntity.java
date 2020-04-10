@@ -37,9 +37,7 @@ public class AppointmentEntity implements Serializable {
 	@Column(name = "animal_type")
 	private String animalType;
 
-	@OneToOne
-	@JoinColumn(name = "id")
-	private OwnerEntity owner;
+
 
 
 
@@ -121,10 +119,7 @@ public class AppointmentEntity implements Serializable {
 		this.animalType = animalType;
 	}
 
-	public String getOwner() {
-		String ownerId = owner.getId().toString();
-		return ownerId;
-	}
+
 
 
 

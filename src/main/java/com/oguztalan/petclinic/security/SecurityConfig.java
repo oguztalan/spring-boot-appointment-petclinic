@@ -19,7 +19,6 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SecurityConfig extends WebSecurityConfigurerAdapter  {
 
 
-    @Qualifier("customUserDetailsService")
     @Autowired
     private UserDetailsService userDetailsService;
 
@@ -61,6 +60,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
                 .accessDeniedHandler(accessDeniedHandler);
         http.csrf().disable();
         http.headers().frameOptions().disable();
+        http.rememberMe().userDetailsService(userDetailsService);
     }
 
     @Override
