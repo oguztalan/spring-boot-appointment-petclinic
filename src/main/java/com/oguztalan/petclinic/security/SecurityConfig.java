@@ -14,6 +14,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import javax.sql.DataSource;
+
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter  {
@@ -24,6 +26,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
 
     @Autowired
     private LoggingAccessDeniedHandler accessDeniedHandler;
+
+    @Autowired
+    private DataSource dataSource;
 
     /*@Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -65,10 +70,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("user").password("{noop}password").roles("USER")
-                .and()
-                .withUser("manager").password("{noop}password").roles("MANAGER");
+        auth.jdbcAuthentication().dataSource(dataSource);
     }
 
     /*@Bean
@@ -76,4 +78,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
         return new BCryptPasswordEncoder();
     }*/
 
+    /*@Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.inMemoryAuthentication()
+                .withUser("user").password("{noop}password").roles("USER")
+                .and()
+                .withUser("manager").password("{noop}password").roles("MANAGER");
+    }*/
 }
