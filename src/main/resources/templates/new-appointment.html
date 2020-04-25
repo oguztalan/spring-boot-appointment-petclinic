@@ -39,10 +39,31 @@
                                     <label for="animalName">Hayvan Adı</label>
                                     <input class="form-control" type="text" id="animalName" name="animalName" th:field="*{animalName}" placeholder="Örneğin: Tekir"/>
                                 </div>
-                                <div class="form-group col-md-4">
-                                    <label for="animalName">Hayvan Türü</label>
-                                    <input class="form-control" type="text" id="animalType" name="animalType" th:field="*{animalType}" placeholder="Örneğin: Kedi"/>
+                                <div class="form-group col-md-2">
+                                    <label for="date">Hayvan Türü</label>
+                                <select th:field="*{animalType}">
+                                    <option value="">Seçiniz</option>
+                                    <option value="Kedi">Kedi</option>
+                                    <option value="Köpek">Köpek</option>
+                                    <option value="Kuş">Kuş</option>
+                                    <option value="Hamster">Hamster</option>
+                                    <option value="Tavşan">Tavşan</option>
+                                    <option value="Kaplumbağa">Kaplumbağa</option>
+                                </select>
                                 </div>
+                               <!-- <div class="dropdown col-md-4">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        Dropdown
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                        <li><a href="#">Action</a></li>
+                                        <li><a href="#">Another action</a></li>
+                                        <li><a href="#">Something else here</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">Separated link</a></li>
+                                    </ul>
+                                </div>-->
                                 <div class="form-group col-md-8">
                                     <label for="description">Açıklama</label>
                                     <input class="form-control" type="text" id="description" name="description" th:field="*{description}" placeholder="Örneğin yapılması gereken bir durum."/>
