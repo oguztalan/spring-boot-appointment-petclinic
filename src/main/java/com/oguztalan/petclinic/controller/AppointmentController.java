@@ -9,11 +9,13 @@ import com.oguztalan.petclinic.service.impl.AppointmentServiceImpl;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -29,6 +31,15 @@ public class AppointmentController {
     public String listAppointments(Model model){
         List<AppointmentEntity> list = appointmentService.listAllAppointment();
         model.addAttribute("allAppointment", list);
+        return ViewConstants.LIST_APPOINTMENTS;
+    }
+
+    @RequestMapping(value = "/list-filtered-appointment", method = RequestMethod.POST)
+    public String listFilteredAppointment(@RequestParam(value = "beginDate",required = false)@DateTimeFormat(pattern = "yyyy-MM-dd") Date beginDate,
+                                          @RequestParam(value = "endDate",required = false)@DateTimeFormat(pattern = "yyyy-MM-dd") Date endDate, Model model){
+        List<AppointmentEntity> list = appointmentService.listFilterAppointment(beginDate,endDate);
+        model.addAttribute("allAppointment", list);
+
         return ViewConstants.LIST_APPOINTMENTS;
     }
 

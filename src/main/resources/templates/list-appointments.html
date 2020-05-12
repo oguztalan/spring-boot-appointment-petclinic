@@ -22,6 +22,12 @@
     <p class="my-5">
         <a href="/date/new" class="btn btn-primary">
             <i class="fas fa-calendar-plus">Yeni Randevu </i></a>
+                <form action="#" th:action="@{/date/list-filtered-appointment}" th:object="${allAppointment}"
+                      method="post">
+                    <input type="date" th:name="beginDate"/>
+                    <input type="date" th:name="endDate"/>
+                    <input type="submit" value=" Ara "/>
+                </form>
     </p>
     <table class="table table-striped">
         <thead>
@@ -50,7 +56,8 @@
                 </a>
             </td>
             <td>
-                <a th:href="@{'/date/delete/' + ${appointment.id}}" class="btn btn-primary">
+                <a th:href="@{'/date/delete/' + ${appointment.id}}" class="btn btn-primary"
+                    onclick="if (!(confirm('Silmek istediğinize emin misiniz?'))) return false">
                     <i class="far fa-calendar-times"></i>
                 </a>
             </td>

@@ -8,9 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class AppointmentServiceImpl  {
@@ -22,11 +20,22 @@ public class AppointmentServiceImpl  {
 	public List<AppointmentEntity> listAllAppointment(){
 		List<AppointmentEntity> result = repository.findAll();
 
+		if (result.size() > 0 ) {
+			result.sort(Comparator.comparing(AppointmentEntity::getDate));
+			return result;
+		}
+		else
+			return new ArrayList<AppointmentEntity>();
+
+	}
+
+	public List<AppointmentEntity> listFilterAppointment(Date startDate, Date endDate){
+
+		List<AppointmentEntity> result = repository.findFilteredDates(startDate,endDate);
 		if (result.size() > 0 )
 			return  result;
 		else
 			return new ArrayList<AppointmentEntity>();
-
 	}
 
 	public AppointmentEntity getAppointmentById(Long id) throws RecordNotFoundException{
@@ -76,6 +85,7 @@ public class AppointmentServiceImpl  {
 			throw new RecordNotFoundException("Böyle bir kayıt bulunamadı");
 		}
 	}
+
 
 
 }
