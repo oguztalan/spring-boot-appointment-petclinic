@@ -7,11 +7,15 @@
 </head>
 <body>
 <div layout:fragment="content" th:remove="tag">
-    <h1 align="center">Veteriner Otomasyon Sistemi</h1>
+  <!--  <h1 align="center">Veteriner Otomasyon Sistemi</h1>
     <p align="center">Veteriner otomasyon sistemine hoşgeldiniz. Kayıtlar ve randevulara site üzerinden ulaşabilirsiniz.</p>
-    <ul>
-        <li align="center">Giriş ekranı için <a href="/user" th:href="@{/login}"> Tıklayınız.</a></li>
-    </ul>
+    <p align="center">Giriş ekranı için <a href="/user" th:href="@{/login}"> Tıklayınız.</a></p>-->
+
+    <div class="jumbotron">
+        <h1 align="center">Veteriner Otomasyon Sistemi</h1>
+        <p align="center">Veteriner otomasyon sistemine hoşgeldiniz. Kayıtlar ve randevulara site üzerinden ulaşabilirsiniz.</p>
+        <p align="center"><a class="btn btn-primary btn-lg" href="#" th:href="@{/login}" role="button">Giriş Ekranı</a></p>
+    </div>
 </div>
 </body>
 </html>

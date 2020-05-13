@@ -26,8 +26,8 @@ CREATE TABLE TBL_OWNERS (
 
 CREATE TABLE TBL_APPOINTMENTS (
   id INT AUTO_INCREMENT  PRIMARY KEY,
-  date DATE ,
-  time TIMESTAMP ,
+  appointment_date DATE ,
+  appointment_time TIMESTAMP ,
   description VARCHAR(250) DEFAULT NULL,
   priority VARCHAR(15) DEFAULT NULL,
   animal_name VARCHAR(15) DEFAULT NULL,

@@ -15,12 +15,12 @@ public class AppointmentEntity implements Serializable {
 	@Column(name = "id")
 	private Long id;
 
-	@Column(name = "date")
+	@Column(name = "appointment_date")
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date date;
 
-	@Column(name = "time")
+	@Column(name = "appointment_time")
 	@Temporal(TemporalType.TIME)
 	@DateTimeFormat(pattern = "HH:mm")
 	private Date time;

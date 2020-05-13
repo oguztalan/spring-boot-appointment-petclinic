@@ -23,10 +23,10 @@
         <a href="/date/new" class="btn btn-primary">
             <i class="fas fa-calendar-plus">Yeni Randevu </i></a>
                 <form action="#" th:action="@{/date/list-filtered-appointment}" th:object="${allAppointment}"
-                      method="post">
+                      method="post"> Tarihe Göre Filtrele :
                     <input type="date" th:name="beginDate"/>
                     <input type="date" th:name="endDate"/>
-                    <input type="submit" value=" Ara "/>
+                    <input type="submit" class="btn btn-info" value=" Ara "/>
                 </form>
     </p>
     <table class="table table-striped">
