@@ -15,7 +15,7 @@
 <div class="container">
     <div class="row">
         <div class="col-8 offset-2">
-            <form action="#" th:action="@{/users/save}" method="POST" th:object="${user}">
+            <form action="#" th:action="@{/users}" method="POST" th:object="${user}">
                 <h1>Yeni Kayıt Ekle</h1>
                 Kullanıcı Adı <input class="form-control" th:field="*{username}" type="text"/>
                 Şifre <input class="form-control" th:field="*{password}" type="password"/>

@@ -1,6 +1,7 @@
 package com.oguztalan.petclinic.security;
 
 import com.oguztalan.petclinic.exception.LoggingAccessDeniedHandler;
+import com.oguztalan.petclinic.service.impl.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -21,8 +22,8 @@ import javax.sql.DataSource;
 public class SecurityConfig extends WebSecurityConfigurerAdapter  {
 
 
-    @Autowired
-    private UserDetailsService userDetailsService;
+    /*@Autowired
+    private UserDetailsService userDetailsService;*/
 
     @Autowired
     private LoggingAccessDeniedHandler accessDeniedHandler;
@@ -30,10 +31,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
     @Autowired
     private DataSource dataSource;
 
-    /*@Override
+    @Autowired
+    @Qualifier("userService")
+    private UserService userService;
+
+   /* @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(encodePWD());
     }*/
+
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userService).passwordEncoder(new BCryptPasswordEncoder());
+    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -65,15 +75,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
                 .accessDeniedHandler(accessDeniedHandler);
         http.csrf().disable();
         http.headers().frameOptions().disable();
-        http.rememberMe().userDetailsService(userDetailsService);
+        http.rememberMe();
     }
 
-    @Override
+   /* @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication().dataSource(dataSource);
     }
 
-    /*@Bean
+    @Bean
     public BCryptPasswordEncoder encodePWD(){
         return new BCryptPasswordEncoder();
     }*/

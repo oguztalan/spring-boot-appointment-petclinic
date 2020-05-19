@@ -4,18 +4,20 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class User {
-private String username;
-	
+
+	private String username;
 	private String password;
 	private boolean active;
+	private String email;
 	private Set<UserRole> userRole = new HashSet<UserRole>();
 
-	public User(String username, String password, boolean active, Set<UserRole> userRole) {
+	public User(String username, String password, boolean active, Set<UserRole> userRole,String email) {
 		super();
 		this.username = username;
 		this.password = password;
 		this.active = active;
 		this.userRole = userRole;
+		this.email = email;
 	}
 
 	public User(String username, String password, boolean active) {
@@ -63,5 +65,13 @@ private String username;
 	public String toString() {
 		return "User [username=" + username + ", password=" + password + ", active=" + active + ", userRole=" + userRole
 				+ "]";
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }
