@@ -9,7 +9,6 @@
                 &copy; OguzTalan
                 <span sec:authorize="isAuthenticated()" style="display: inline-block;">
                     | Oturum açan: <span sec:authentication="name"></span> |
-                    Roles: <span sec:authentication="principal.authorities"></span> |
                     <a th:href="@{/logout}">Çıkış</a>
                 </span>
             </p>

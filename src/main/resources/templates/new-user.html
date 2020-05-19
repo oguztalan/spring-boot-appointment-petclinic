@@ -1,6 +1,7 @@
 <!doctype html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{fragments/layout}">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -12,20 +13,46 @@
     <title>Yeni Kayıt</title>
 </head>
 <body>
-<div class="container">
+<div layout:fragment="content" th:remove="tag" >
     <div class="row">
-        <div class="col-8 offset-2">
+        <div class="col-md-6 col-md-offset-3">
             <form action="#" th:action="@{/users}" method="POST" th:object="${user}">
-                <h1>Yeni Kayıt Ekle</h1>
-                Kullanıcı Adı <input class="form-control" th:field="*{username}" type="text"/>
-                Şifre <input class="form-control" th:field="*{password}" type="password"/>
-                <button class="btn btn-info" type="submit">Add</button>
-                <a class="btn btn-danger" href="#" th:href="@{/login}">Back</a>
+                <h1 align="center">Yeni Kullanıcı Kaydı</h1>
+                <br>
+
+                <div  class="form-group ">
+                    <label for="user">Kullanıcı Adı</label>
+                <input class="form-control"
+                       th:field="*{username}"
+                       type="text"
+                       id="user"
+                       name="user"
+                       placeholder="Kullanıcı Adı"
+                       />
+                </div>
+
+                <div class="form-group ">
+                    <label for="password">Şifre</label>
+                    <input class="form-control"
+                             th:field="*{password}"
+                             type="password"
+                               id="password"
+                               name="password"
+                           placeholder="Şifre"/>
+                </div>
+                <div class="form-group">
+                    <div class="row" >
+                        <div class="col-12 mt-2 col-sm-offset-10">
+                <button align="center" class="btn btn-success" type="submit">Kaydet</button>
+                <a align="center" class="btn btn-danger" href="#" th:href="@{/login}">Geri</a>
+                        </div>
+                    </div>
+                </div>
+
             </form>
         </div>
-    </div>
 </div>
-
+</div>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
