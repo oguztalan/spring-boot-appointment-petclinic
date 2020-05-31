@@ -22,6 +22,7 @@ public class AppointmentServiceImpl  {
 
 		if (result.size() > 0 ) {
 			result.sort(Comparator.comparing(AppointmentEntity::getDate));
+			Collections.reverse(result);
 			return result;
 		}
 		else
@@ -63,6 +64,7 @@ public class AppointmentServiceImpl  {
 				newEntity.setTime(entity.getTime());
 				newEntity.setAnimalName(entity.getAnimalName());
 				newEntity.setAnimalType(entity.getAnimalType());
+				newEntity.setDoctor(entity.getDoctor());
 				newEntity = repository.save(newEntity);
 
 				return newEntity;

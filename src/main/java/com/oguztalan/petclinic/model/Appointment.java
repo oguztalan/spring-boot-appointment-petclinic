@@ -15,6 +15,7 @@ public class Appointment {
 	private String priority;
 	private String animalName;
 	private String animalType;
+	private String doctor;
 
 	public Appointment() {
 		super();
@@ -100,6 +101,14 @@ public class Appointment {
 
 	public void setAnimalType(String animalType) {
 		this.animalType = animalType;
+	}
+
+	public String getDoctor() {
+		return doctor;
+	}
+
+	public void setDoctor(String doctor) {
+		this.doctor = doctor;
 	}
 
 	@Override

@@ -37,6 +37,9 @@ public class AppointmentEntity implements Serializable {
 	@Column(name = "animal_type")
 	private String animalType;
 
+	@Column(name = "doctor")
+	private String doctor;
+
 
 
 
@@ -119,9 +122,13 @@ public class AppointmentEntity implements Serializable {
 		this.animalType = animalType;
 	}
 
+	public String getDoctor() {
+		return doctor;
+	}
 
-
-
+	public void setDoctor(String doctor) {
+		this.doctor = doctor;
+	}
 
 	@Override
 	public String toString() {
