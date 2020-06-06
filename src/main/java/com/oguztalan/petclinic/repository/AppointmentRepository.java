@@ -17,6 +17,9 @@ public interface AppointmentRepository extends JpaRepository<AppointmentEntity, 
 	@Query(value = "from AppointmentEntity t where date BETWEEN :startDate AND :endDate")
 	List<AppointmentEntity> findFilteredDates(@Param("startDate") Date startDate, @Param("endDate")Date endDate);
 
+	@Query(value = "from AppointmentEntity t where status = 1")
+	List<AppointmentEntity> findAllByActiveStatus();
+
 
 
 }

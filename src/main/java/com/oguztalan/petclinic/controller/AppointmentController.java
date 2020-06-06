@@ -43,6 +43,13 @@ public class AppointmentController {
         return ViewConstants.LIST_APPOINTMENTS;
     }
 
+    @GetMapping(value = "list-active-appointment")
+    public String listActiveStatusAppointment(Model model){
+        List<AppointmentEntity> list = appointmentService.listActiveStatus();
+        model.addAttribute("activeAppointment",list);
+        return ViewConstants.LIST_APPOINTMENTS;
+    }
+
     @GetMapping("/new")
     public String storeForm(Model model) {
         model.addAttribute("createAppointment", new Appointment());

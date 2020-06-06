@@ -28,6 +28,10 @@
                     <input type="date" th:name="endDate"/>
                     <input type="submit" class="btn btn-info" value=" Ara "/>
                 </form>
+                <form action="#" th:action="@{date/list-active-appointment}" th:object="${activeAppointment}"
+                      method="get">
+                    <input type="submit" class="btn btn-info" value=" Aktif Randevular "/>
+                </form>
     </p>
     <table class="table table-striped">
         <thead>

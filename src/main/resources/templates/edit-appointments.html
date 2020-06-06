@@ -18,7 +18,7 @@
 <div layout:fragment="content" th:remove="tag" >
     <div class="alert alert-success" role="alert">
         <div class="container my-5">
-        <h3 class="alert-heading">Randevu Kaydı Düzenle</h3>
+        <h3 class="alert-heading" >Randevu Kaydı Düzenle</h3>
         <br>
         <div class="card">
             <div class="card-body">
@@ -55,10 +55,31 @@
                                     <label for="description">Açıklama</label>
                                     <input class="form-control" type="text" id="description" name="description" th:field="*{description}" placeholder="Örneğin yapılması gereken bir durum"/>
                                 </div>
+                                <div class="form-group col-md-2">
+                                    <label for="description">Doktor</label>
+                                    <select th:field="*{doctor}">
+                                        <option value="">Seçiniz</option>
+                                        <option value="Hakan Yılmaz">Vet.Hekim Hakan Yılmaz</option>
+                                        <option value="Zeynep Şahin">Vet.Hekim Zeynep Şahin</option>
+                                        <option value="Defne Gül">Vet.Hekim Defne Gül</option>
+                                        <option value="Murat Kaya">Vet.Hekim Murat Kaya</option>
+                                    </select>
+                                </div>
                                 <div class="form-group col-md-8">
                                     <label for="priority">Önem Derecesi</label>
                                     <input class="form-control" type="text" id="priority" name="priority" th:field="*{priority}" placeholder="Örneğin: Yüksek"/>
                                 </div>
+                                <div class="form-group col-md-2">
+                                    <label for="priority">Randevu Durumu</label>
+                                    <select th:field="*{status}">
+                                        <option value="">Seçiniz</option>
+                                        <option value=1>Aktif</option>
+                                        <option value=0>İptal</option>
+                                    </select>
+                                </div>
+
+                                <br>
+
                                 <div class="col-md-6">
                                     <input type="submit" class="btn btn-primary" value=" Kaydet ">
                                     <a class="btn btn-danger" href="#" th:href="@{/date/list-appointments}">Geri</a>
