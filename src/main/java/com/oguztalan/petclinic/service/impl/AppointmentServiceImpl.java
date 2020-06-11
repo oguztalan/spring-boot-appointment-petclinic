@@ -37,6 +37,13 @@ public class AppointmentServiceImpl  {
 		}
 		return new ArrayList<>();
 	}
+	public List<AppointmentEntity> listCanceledStatus(){
+		List<AppointmentEntity> result = repository.findAllByCanceledStatus();
+		if (result.size() > 0) {
+			return result;
+		}
+		return new ArrayList<>();
+	}
 
 	public List<AppointmentEntity> listFilterAppointment(Date startDate, Date endDate){
 
@@ -73,8 +80,9 @@ public class AppointmentServiceImpl  {
 				newEntity.setAnimalName(entity.getAnimalName());
 				newEntity.setAnimalType(entity.getAnimalType());
 				newEntity.setDoctor(entity.getDoctor());
-				newEntity.setNote(entity.getNote());
 				newEntity.setStatus(entity.getStatus());
+				newEntity.setOwnerName(entity.getOwnerName());
+				newEntity.setNotes(entity.getNotes());
 				newEntity = repository.save(newEntity);
 
 				return newEntity;

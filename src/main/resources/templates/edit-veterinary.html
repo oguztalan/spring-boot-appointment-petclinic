@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{fragments/layout}">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Veteriner Login</title>
+    <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/tables.css}"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
+
+</head>
+<body>
+<div layout:fragment="content" th:remove="tag" >
+    <div class="alert alert-success" role="alert">
+        <div class="container my-5">
+            <h3 class="alert-heading">Kayıt Düzenle</h3>
+            <br>
+            <div class="card">
+                <div class="card-body">
+                    <div class="col-md-10">
+                        <form action="#" th:action="@{/users/save}" th:object="${editUsers}"
+                              method="post">
+                            <div class="row">
+                                <table class="table">
+                                    <div class="form-group col-md-8">
+                                        <label for="firstName" class="col-form-label">Kullanıcı Adı</label>
+                                        <input type="text" th:field="*{username}" class="form-control"
+                                               id="firstName" placeholder="Kullanıcı Adı" />
+                                    </div>
+                                    <div class="form-group col-md-8">
+                                        <label for="lastName" class="col-form-label">Şifre</label>
+                                        <input type="text" th:field="*{password}" class="form-control"
+                                               id="lastName" placeholder="Şifre" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="submit" class="btn btn-primary" value=" Submit ">
+                                    </div>
+
+                                    <input type="hidden" id="id" th:field="*{id}">
+                                </table>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

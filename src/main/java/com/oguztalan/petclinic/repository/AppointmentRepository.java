@@ -20,6 +20,8 @@ public interface AppointmentRepository extends JpaRepository<AppointmentEntity, 
 	@Query(value = "from AppointmentEntity t where status = 1")
 	List<AppointmentEntity> findAllByActiveStatus();
 
+	@Query(value = "from AppointmentEntity t where status = 0")
+	List<AppointmentEntity> findAllByCanceledStatus();
 
 
 }

@@ -16,6 +16,8 @@ public class Appointment {
 	private String animalName;
 	private String animalType;
 	private String doctor;
+	private String ownerName;
+	private String notes;
 
 	public Appointment() {
 		super();
@@ -109,6 +111,22 @@ public class Appointment {
 
 	public void setDoctor(String doctor) {
 		this.doctor = doctor;
+	}
+
+	public String getOwnerName() {
+		return ownerName;
+	}
+
+	public void setOwnerName(String ownerName) {
+		this.ownerName = ownerName;
+	}
+
+	public String getNotes() {
+		return notes;
+	}
+
+	public void setNotes(String notes) {
+		this.notes = notes;
 	}
 
 	@Override

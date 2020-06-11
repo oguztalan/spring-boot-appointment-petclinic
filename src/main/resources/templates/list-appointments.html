@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Veteriner Login</title>
+    <title>Veteriner Randevu Kayıt</title>
     <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/css/tables.css}"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css">
@@ -28,10 +28,22 @@
                     <input type="date" th:name="endDate"/>
                     <input type="submit" class="btn btn-info" value=" Ara "/>
                 </form>
-                <form action="#" th:action="@{date/list-active-appointment}" th:object="${activeAppointment}"
+        <div class="button-container">
+                <form action="#" th:action="@{/date/list-active-appointment}" th:object="${allAppointment}"
                       method="get">
-                    <input type="submit" class="btn btn-info" value=" Aktif Randevular "/>
+                    <div>
+                    <button type="submit" class="btn-primary">Aktif Randevular</button>
+                    </div>
                 </form>
+                <form action="#" th:action="@{/date/list-cancel-appointment}" th:object="${allAppointment}"
+                      method="get">
+                    <div>
+                        <button type="submit" class="btn-danger">İptal Olan Randevular</button>
+                    </div>
+                </form>
+        </div>
+    </div>
+
     </p>
     <table class="table table-striped">
         <thead>
@@ -43,6 +55,7 @@
             <th>Açıklama</th>
             <th>Önem Derecesi</th>
             <th>Veteriner Hekim</th>
+            <th>Sahip Adı</th>
             <th>Düzenle</th>
             <th>Sil</th>
         </tr>
@@ -56,6 +69,7 @@
             <td><span th:text="${appointment.description}"></span></td>
             <td><span th:text="${appointment.priority}"></span></td>
             <td><span th:text="${appointment.doctor}"></span></td>
+            <td><span th:text="${appointment.ownerName}"></span></td>
             <td>
                 <a th:href="@{'/date/edit/' + ${appointment.id}}" class="btn btn-primary">
                     <i class="far fa-calendar-check"></i>

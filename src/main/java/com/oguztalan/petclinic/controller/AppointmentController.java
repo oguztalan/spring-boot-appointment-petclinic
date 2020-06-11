@@ -46,7 +46,14 @@ public class AppointmentController {
     @GetMapping(value = "list-active-appointment")
     public String listActiveStatusAppointment(Model model){
         List<AppointmentEntity> list = appointmentService.listActiveStatus();
-        model.addAttribute("activeAppointment",list);
+        model.addAttribute("allAppointment",list);
+        return ViewConstants.LIST_APPOINTMENTS;
+    }
+
+    @GetMapping(value = "list-cancel-appointment")
+    public String listCancelStatusAppointment(Model model){
+        List<AppointmentEntity> list = appointmentService.listCanceledStatus();
+        model.addAttribute("allAppointment",list);
         return ViewConstants.LIST_APPOINTMENTS;
     }
 

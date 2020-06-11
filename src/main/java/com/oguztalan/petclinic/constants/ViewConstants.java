@@ -10,4 +10,5 @@ public class ViewConstants {
     public static final String NEW_APPOINTMENT = "new-appointment";
     public static final String NEW_OWNER = "new-owner";
     public static final String NEW_USER = "new-user";
+    public static final String LIST_USERS = "list-veterinary";
 }

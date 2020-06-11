@@ -1,7 +1,9 @@
 package com.oguztalan.petclinic.service.impl;
 
+import com.oguztalan.petclinic.entities.OwnerEntity;
 import com.oguztalan.petclinic.entities.User;
 import com.oguztalan.petclinic.entities.UserRole;
+import com.oguztalan.petclinic.exception.RecordNotFoundException;
 import com.oguztalan.petclinic.repository.UserRepository;
 import com.oguztalan.petclinic.repository.UserRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +16,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Service("userService")
 public class UserService implements UserDetailsService {
@@ -28,6 +27,34 @@ public class UserService implements UserDetailsService {
     @Autowired
     @Qualifier("userRoleRepository")
     private UserRoleRepository userRoleRepository;
+
+    public List<User> listAllUsers(){
+        List<User> result = userRepository.findAll();
+        if (result.size() > 0) {
+            return result;
+        }
+        else
+            return new ArrayList<>();
+    }
+
+    public User getUserById(Long id) throws RecordNotFoundException {
+        Optional<User> users = userRepository.findById(id);
+        if (users.isPresent())
+            return users.get();
+        else
+            throw new RecordNotFoundException("Verilen id ile bir kayıt bulunamadı!");
+    }
+
+    public void deleteUserById(Long id)throws RecordNotFoundException{
+
+        Optional<User> owner = userRepository.findById(id);
+
+        if (owner.isPresent()){
+            userRepository.deleteById(id);
+        }else {
+            throw new RecordNotFoundException("Verilen id ile bir kayıt bulunamadı!");
+        }
+    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -56,15 +83,22 @@ public class UserService implements UserDetailsService {
         userRoleRepository.save(new UserRole(userCreated, "admin"));
         return toModel(userCreated);
 
+    }
 
-        /*if (user.getUserId() == null) {
-            user.setActive(true);
-            user = userRepository.save(user);
+    public com.oguztalan.petclinic.model.User updateUser(com.oguztalan.petclinic.model.User user){
+        User entity = toEntity(user);
+        Optional<User> users = userRepository.findById(entity.getId());
 
-            return user;
-        } else {
-            return null;
-        }*/
+            User newUser = users.get();
+            newUser.setUsername(entity.getUsername());
+            newUser.setPassword(new BCryptPasswordEncoder().encode(entity.getPassword()));
+
+            newUser = userRepository.save(newUser);
+            userRoleRepository.save(new UserRole(newUser,"admin"));
+
+
+            return toModel(newUser);
+
 
     }
 
