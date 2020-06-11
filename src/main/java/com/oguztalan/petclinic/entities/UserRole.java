@@ -1,15 +1,23 @@
 package com.oguztalan.petclinic.entities;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name="user_role")
+@AllArgsConstructor
+@Data
+@ToString
 public class UserRole {
 	
 	@Id
 	@GeneratedValue
 	@Column(name="user_role_id", unique=true, nullable=false)
-	private int userRoleId;
+	private Integer userRoleId;
 	
 	@ManyToOne(fetch= FetchType.EAGER)
 	@JoinColumn(name="username", nullable=false)
@@ -23,30 +31,8 @@ public class UserRole {
 		this.user = user;
 		this.role = role;
 	}
-	
+
 	public UserRole() {}
 
-	public int getUserRoleId() {
-		return userRoleId;
-	}
 
-	public void setUserRoleId(int userRoleId) {
-		this.userRoleId = userRoleId;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
-	public String getRole() {
-		return role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
-	}
 }

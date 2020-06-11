@@ -47,9 +47,10 @@ public class UserService implements UserDetailsService {
 
     public void deleteUserById(Long id)throws RecordNotFoundException{
 
-        Optional<User> owner = userRepository.findById(id);
-
-        if (owner.isPresent()){
+        Optional<User> entity = userRepository.findById(id);
+        Integer roleid = entity.get().getId().intValue();
+        if (entity.isPresent()){
+            userRoleRepository.deleteByUsernameId(roleid);
             userRepository.deleteById(id);
         }else {
             throw new RecordNotFoundException("Verilen id ile bir kayıt bulunamadı!");
@@ -91,8 +92,8 @@ public class UserService implements UserDetailsService {
         }
     }
 
-    public com.oguztalan.petclinic.model.User updateUser(com.oguztalan.petclinic.model.User user){
-        User entity = toEntity(user);
+    public User updateUser(User entity){
+
         Optional<User> users = userRepository.findById(entity.getId());
             if (users.isPresent()) {
                 User newUser = users.get();
@@ -101,8 +102,7 @@ public class UserService implements UserDetailsService {
                 newUser.setPassword(new BCryptPasswordEncoder().encode(entity.getPassword()));
 
                 newUser = userRepository.save(newUser);
-                userRoleRepository.save(new UserRole(newUser, "admin"));
-                return toModel(newUser);
+                return newUser;
             }
             else {
                 return null;

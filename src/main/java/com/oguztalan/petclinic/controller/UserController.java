@@ -57,7 +57,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String editUser(@ModelAttribute(name = "editUsers") User user) {
+    public String editUser(@ModelAttribute(name = "editUsers") com.oguztalan.petclinic.entities.User user) {
         userService.updateUser(user);
         return "redirect:/users/list-users";
     }
