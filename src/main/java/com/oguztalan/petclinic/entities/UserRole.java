@@ -3,8 +3,7 @@ package com.oguztalan.petclinic.entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name="user_role", uniqueConstraints = @UniqueConstraint(
-		columnNames={"role", "username"}))
+@Table(name="user_role")
 public class UserRole {
 	
 	@Id

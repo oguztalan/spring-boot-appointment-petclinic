@@ -1,7 +1,12 @@
 package com.oguztalan.petclinic.entities;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -9,10 +14,15 @@ import java.util.Set;
 
 @Entity
 @Table(name = "users")
-public class User {
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+@ToString
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @Column(name="username")
@@ -31,55 +41,5 @@ public class User {
     @OneToMany(fetch=FetchType.EAGER)
     private List<AppointmentEntity> appointments;
 
-    public User(String username, String password, boolean active, Set<UserRole> userRole) {
-        super();
-        this.username = username;
-        this.password = password;
-        this.active = active;
-        this.userRole = userRole;
-    }
 
-    public User() {
-        super();
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public boolean isActive() {
-        return active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
-    }
-
-    public Set<UserRole> getUserRole() {
-        return userRole;
-    }
-
-    public void setUserRole(Set<UserRole> userRole) {
-        this.userRole = userRole;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 }

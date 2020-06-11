@@ -27,7 +27,7 @@ public class UserController {
     }
 
     @PostMapping("")
-    public String saveUser(@ModelAttribute(name = "user") User user) {
+    public String saveUser(@ModelAttribute(name = "user") User user) throws RecordNotFoundException {
         user.setActive(true);
         userService.createUser(user);
         return "redirect:/login";

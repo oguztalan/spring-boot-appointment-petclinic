@@ -76,28 +76,40 @@ public class UserService implements UserDetailsService {
         return new ArrayList<GrantedAuthority>(auths);
     }
 
-    public com.oguztalan.petclinic.model.User createUser(com.oguztalan.petclinic.model.User user) {
+    public com.oguztalan.petclinic.model.User createUser(com.oguztalan.petclinic.model.User user) throws RecordNotFoundException {
         user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
         User userEntity = toEntity(user);
-        User userCreated = userRepository.save(userEntity);
-        userRoleRepository.save(new UserRole(userCreated, "admin"));
-        return toModel(userCreated);
 
+        User usr = userRepository.findByUsername(userEntity.getUsername());
+        if (usr != null && (usr.getUsername().equals(userEntity.getUsername()))) {
+            throw new RecordNotFoundException("Bu Kullanıcı adı mevcut Lütfen başka bir kullanıcı adı girin");
+        }
+        else {
+            User userCreated = userRepository.save(userEntity);
+            userRoleRepository.save(new UserRole(userCreated, "admin"));
+            return toModel(userCreated);
+        }
     }
 
     public com.oguztalan.petclinic.model.User updateUser(com.oguztalan.petclinic.model.User user){
         User entity = toEntity(user);
         Optional<User> users = userRepository.findById(entity.getId());
+            if (users.isPresent()) {
+                User newUser = users.get();
+                newUser.setId(entity.getId());
+                newUser.setUsername(entity.getUsername());
+                newUser.setPassword(new BCryptPasswordEncoder().encode(entity.getPassword()));
 
-            User newUser = users.get();
-            newUser.setUsername(entity.getUsername());
-            newUser.setPassword(new BCryptPasswordEncoder().encode(entity.getPassword()));
+                newUser = userRepository.save(newUser);
+                userRoleRepository.save(new UserRole(newUser, "admin"));
+                return toModel(newUser);
+            }
+            else {
+                return null;
+            }
 
-            newUser = userRepository.save(newUser);
-            userRoleRepository.save(new UserRole(newUser,"admin"));
 
 
-            return toModel(newUser);
 
 
     }
