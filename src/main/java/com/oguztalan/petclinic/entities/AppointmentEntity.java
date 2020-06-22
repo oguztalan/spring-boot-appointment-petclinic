@@ -48,9 +48,6 @@ public class AppointmentEntity implements Serializable {
 	@Column(name = "doctor")
 	private String doctor;
 
-	@Column(name = "note")
-	private String note;
-
 	@Column(name = "status")
 	private Long status;
 
